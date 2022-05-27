@@ -1,0 +1,109 @@
+package MenuTempatTidurBayi;
+import Final.Final;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuTempatTidurBayi extends javax.swing.JFrame {
+    private JTextField textJumlah;
+    private JButton buttonHitungTotalPembayaran;
+    private JPanel panelboxbaby;
+    private JLabel labelValeriesBoxBaby;
+    private JLabel labelHarga;
+    private JLabel labelUkuran1;
+    private JLabel labelUkuran2;
+    private JLabel labelUkuran3;
+    private JLabel labelUkuran4;
+    private JLabel labelPlihanUkuran;
+    private JLabel labelMasukkanPilihanUkuran;
+    private JLabel labelJumlah;
+    private JButton buttonback;
+    private JComboBox comboBoxukuran;
+    private JTextField textharga;
+    private JTextField texttotal;
+    private JLabel labelharga;
+    private JComboBox comboBoxmetode;
+    private JTextField textmetode;
+    private JButton buttonlihat;
+    private JTextArea texthasil;
+    private JButton buttonnext;
+
+    public MenuTempatTidurBayi() {
+        add(panelboxbaby);
+        setSize(500, 500);
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        comboBoxukuran.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Ukuran = (String) comboBoxukuran.getSelectedItem();
+                switch (Ukuran) {
+                    case "120 x 70":
+                        textharga.setText("50000000");
+                        break;
+                    case "140 x 80":
+                        textharga.setText("80000000");
+                        break;
+                    case "80 x 50":
+                        textharga.setText("25000000");
+                        break;
+                    case "100 x 70":
+                        textharga.setText("47000000");
+                        break;
+                }
+            }
+        });
+        buttonHitungTotalPembayaran.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int jumlahbarang = Integer.parseInt(textJumlah.getText());
+                int hargabarang = Integer.parseInt(textharga.getText());
+                int totalharga = jumlahbarang * hargabarang;
+                texttotal.setText(Integer.toString(totalharga));
+            }
+        });
+        comboBoxmetode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String metode = (String) comboBoxmetode.getSelectedItem();
+                switch (metode) {
+                    case "Transfer antar Bank":
+                        textmetode.setText("Silakan lakukan pembayaran ke nomor rekening 2345677");
+                        break;
+                    case "COD (Bayar di tempat)":
+                        textmetode.setText("Silakan menunggu barang datang untuk melakukan pembayaran");
+                        break;
+                }
+            }
+        });
+        buttonlihat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texthasil.setText(" Pengemasan barang dilakukan dalam 2 hari, " +
+                        " estimasi sampai diperkirakan 7 hari setelah melakukan pembayaran, " +
+                        "terimakasih sudah berbelanja disini");
+            }
+        });
+        buttonnext.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Final akhir = new Final();
+                akhir.setVisible(true);
+            }
+        });
+    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("BOX BABY MENU");
+        frame.setContentPane(new MenuTempatTidurBayi().panelboxbaby);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(990, 990);
+        frame.setResizable(true);
+    }
+}
