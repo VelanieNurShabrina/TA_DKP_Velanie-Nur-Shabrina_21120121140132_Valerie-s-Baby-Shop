@@ -1,0 +1,115 @@
+package MenuStroller;
+import Final.Final;
+import MenuSetAlatMakan.MenuSetAlatMakan;
+import menu.MenuBotolBayi;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuStroller extends javax.swing.JFrame {
+    private JTextField textJumlah;
+    private JLabel labelValeriesBabyStrollers;
+    private JLabel labelHarga;
+    private JLabel labelPilihanWarna;
+    private JLabel labelHitam;
+    private JLabel labelKhaki;
+    private JLabel labelPink;
+    private JLabel labelAbuabu;
+    private JLabel labelMasukkanPilihanWarna;
+    private JLabel labelJumlah;
+    private JPanel panelstroller;
+    private JButton buttonHitungTotalPembayaran;
+    private JButton buttonback;
+    private JComboBox comboBoxwarna;
+    private JTextField textharga;
+    private JTextField texttotal;
+    private JLabel labelharga;
+    private JComboBox comboBoxmetode;
+    private JTextField textmetode;
+    private JButton buttonlihat;
+    private JTextArea texthasil;
+    private JButton buttonNext;
+
+    public MenuStroller() {
+        add(panelstroller);
+        setSize(500, 500);
+
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        comboBoxwarna.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Warna = (String) comboBoxwarna.getSelectedItem();
+                switch (Warna) {
+                    case "Hitam":
+                        textharga.setText("150000000");
+                        break;
+                    case "Khaki":
+                        textharga.setText("170000000");
+                        break;
+                    case "Pink":
+                        textharga.setText("180000000");
+                        break;
+                    case "Abu-abu":
+                        textharga.setText("190000000");
+                        break;
+                }
+            }
+        });
+
+
+        buttonHitungTotalPembayaran.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int jumlahbarang = Integer.parseInt(textJumlah.getText());
+                int hargabarang = Integer.parseInt(textharga.getText());
+                int totalharga = jumlahbarang * hargabarang;
+                texttotal.setText(Integer.toString(totalharga));
+            }
+        });
+        comboBoxmetode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String metode = (String) comboBoxmetode.getSelectedItem();
+                switch (metode) {
+                    case "Transfer antar Bank":
+                        textmetode.setText("Silakan lakukan pembayaran ke nomor rekening 2345677");
+                        break;
+                    case "COD (Bayar di tempat)":
+                        textmetode.setText("Silakan menunggu barang datang untuk melakukan pembayaran");
+                        break;
+                }
+            }
+        });
+        buttonlihat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texthasil.setText(" Pengemasan barang dilakukan dalam 2 hari, " +
+                        " estimasi sampai diperkirakan 7 hari setelah melakukan pembayaran, " +
+                        "terimakasih sudah berbelanja disini");
+            }
+        });
+        buttonNext.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Final akhir = new Final();
+                akhir.setVisible(true);
+            }
+        });
+    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("STROLLER MENU");
+        frame.setContentPane(new MenuStroller().panelstroller);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(900, 900);
+        frame.setResizable(true);
+    }
+
+}
