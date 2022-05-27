@@ -1,0 +1,83 @@
+package Home;
+
+import MenuMainan.MenuMainan;
+import MenuSetAlatMakan.MenuSetAlatMakan;
+import MenuStroller.MenuStroller;
+import MenuTempatTidurBayi.MenuTempatTidurBayi;
+import menu.MenuBotolBayi;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+
+public class Home {
+    private JTextField textNama;
+    private JTextField textAlamat;
+    private JTextField textKategoriBarang;
+    private JButton buttonNext;
+    private JLabel labelNama;
+    private JLabel labelAlamat;
+    private JLabel labelKategoriBarang;
+    private JLabel labelWelcome;
+    private JPanel panelhome;
+    private JButton ButtonBotolSusu;
+    private JButton ButtonBoxBaby;
+    private JButton ButtonStroller;
+    private JButton ButtonMainan;
+    private JButton ButtonSetAlatMakan;
+    private JLabel labelHello;
+
+    public Home() {
+        ButtonBotolSusu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuBotolBayi botolbayi = new MenuBotolBayi();
+                botolbayi.setVisible(true);
+            }
+        });
+
+        ButtonStroller.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuStroller stroller = new MenuStroller();
+                stroller.setVisible(true);
+            }
+        });
+        
+        ButtonBoxBaby.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuTempatTidurBayi boxbaby = new MenuTempatTidurBayi();
+                boxbaby.setVisible(true);
+            }
+        });
+        ButtonMainan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuMainan mainan = new MenuMainan();
+                mainan.setVisible(true);
+            }
+        });
+        ButtonSetAlatMakan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuSetAlatMakan alatmakan= new MenuSetAlatMakan();
+                alatmakan.setVisible(true);
+
+            }
+        });
+    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("HOME");
+        frame.setContentPane(new Home().panelhome);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(900, 900);
+        frame.setResizable(true);
+
+
+    }
+}
