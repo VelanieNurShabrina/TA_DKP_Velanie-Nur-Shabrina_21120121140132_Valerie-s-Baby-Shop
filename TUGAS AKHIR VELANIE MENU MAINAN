@@ -1,0 +1,112 @@
+package MenuMainan;
+import Final.Final;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuMainan extends javax.swing.JFrame {
+    private JButton hitungTotalPembayaranButton;
+    private JLabel labelValeriesBabyToys;
+    private JLabel labelHarga;
+    private JLabel labelPilihanJenisMainan;
+    private JLabel labelMainan1;
+    private JLabel labelMainan2;
+    private JLabel labelMainan3;
+    private JLabel labelMainan4;
+    private JLabel labelMasukkanPilihanJenisMainan;
+    private JPanel panelmainan;
+    private JButton buttonback;
+    private JComboBox comboBoxjenismainan;
+    private JTextField texthargamainann;
+    private JLabel texthargamainan;
+    private JTextField texttotal;
+    private JTextField textJumlah;
+    private JLabel labelJumlah;
+    private JComboBox comboBoxmetode;
+    private JTextField textmetode;
+    private JButton buttonlihat;
+    private JTextArea texthasil;
+    private JButton nextButton;
+
+    public MenuMainan() {
+        add(panelmainan);
+        setSize(500, 500);
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        comboBoxjenismainan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Jenis = (String) comboBoxjenismainan.getSelectedItem();
+                switch (Jenis) {
+                    case "Kerincingan Bayi":
+                        texthargamainann.setText("2000000");
+                        break;
+                    case "Ring Stacks":
+                        texthargamainann.setText("1500000");
+                        break;
+                    case "Bola Sensorik":
+                        texthargamainann.setText("2500000");
+                        break;
+                    case "Winkel Color Burst":
+                        texthargamainann.setText("2500000");
+                        break;
+                }
+            }
+        });
+        hitungTotalPembayaranButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int jumlahbarang = Integer.parseInt(textJumlah.getText());
+                int hargabarang = Integer.parseInt(texthargamainann.getText());
+                int totalharga = jumlahbarang*hargabarang;
+                texttotal.setText(Integer.toString(totalharga));
+            }
+        });
+        comboBoxmetode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String metode = (String) comboBoxmetode.getSelectedItem();
+                switch (metode) {
+                    case "Transfer antar Bank":
+                        textmetode.setText("Silakan lakukan pembayaran ke nomor rekening 2345677");
+                        break;
+                    case "COD (Bayar di tempat)":
+                        textmetode.setText("Silakan menunggu barang datang untuk melakukan pembayaran");
+                        break;
+            }
+        }
+
+    }
+        );
+        buttonlihat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texthasil.setText(" Pengemasan barang dilakukan dalam 2 hari, " +
+                        " estimasi sampai diperkirakan 7 hari setelah melakukan pembayaran, " +
+                        "terimakasih sudah berbelanja disini");
+            }
+        });
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Final akhir = new Final();
+                akhir.setVisible(true);
+            }
+        });
+    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("BABY TOYS MENU");
+        frame.setContentPane(new MenuMainan().panelmainan);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(900, 900);
+        frame.setResizable(true);
+    }
+
+}
