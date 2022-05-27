@@ -1,0 +1,114 @@
+package menu;
+import Final.Final;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuBotolBayi extends javax.swing.JFrame {
+    private JTextField textJumlah;
+    private JLabel labelJumlah;
+    private JLabel labelPlihUkuran;
+    private JLabel labelHarga;
+    private JLabel labelValeriesbabybottles;
+    private JPanel panelbotol;
+    private JTextField textMasukkanPilihanUkuran;
+    private JLabel labelUkuran120ml;
+    private JLabel labelUkuran160ml;
+    private JLabel labelUkuran240ml;
+    private JLabel labelMasukkanPilihanUkuran;
+    private JButton buttonback;
+    private JComboBox comboboxUkuran;
+    private JTextField textharga;
+    private JTextField textkeseluruhan;
+    private JButton buttonkeseluruhan;
+    private JLabel labelhargabotol;
+    private JComboBox comboBoxmetode;
+    private JTextField textmetode;
+    private JTextArea texthasil;
+    private JButton buttonlihat;
+    private JButton buttonnext;
+    private JTextField textpilihukur;
+    private JTextField textAlamat;
+
+    public MenuBotolBayi() {
+        add(panelbotol);
+        setSize(500, 500);
+
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+
+        comboboxUkuran.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Ukuran = (String) comboboxUkuran.getSelectedItem();
+                switch (Ukuran) {
+                    case "Ukuran 120 ml":
+                        textharga.setText("3000000");
+                        break;
+                    case "Ukuran 160 ml":
+                        textharga.setText("3200000");
+                        break;
+                    case "Ukuran 240 ml":
+                        textharga.setText("3500000");
+                        break;
+                }
+            }
+        });
+
+        buttonkeseluruhan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int jumlahbarang = Integer.parseInt(textJumlah.getText());
+                int hargabarang = Integer.parseInt(textharga.getText());
+                int totalharga = jumlahbarang*hargabarang;
+                textkeseluruhan.setText(Integer.toString(totalharga));
+            }
+        });
+
+        comboBoxmetode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String metode = (String) comboBoxmetode.getSelectedItem();
+                switch (metode) {
+                    case "Transfer antar Bank":
+                        textmetode.setText("Silakan lakukan pembayaran ke nomor rekening 2345677");
+                        break;
+                    case "COD (Bayar di tempat)":
+                        textmetode.setText("Silakan menunggu barang datang untuk melakukan pembayaran");
+                        break;
+            }
+        }
+    });
+        buttonlihat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texthasil.setText(" Pengemasan barang dilakukan dalam 2 hari, " +
+                        " estimasi sampai diperkirakan 7 hari setelah melakukan pembayaran, " +
+                        "terimakasih sudah berbelanja disini" );
+
+
+            }
+        });
+        buttonnext.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Final akhir = new Final();
+                akhir.setVisible(true);
+            }
+        });
+    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("BABY BOTTLES MENU");
+        frame.setContentPane(new MenuBotolBayi().panelbotol);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(990, 990);
+        frame.setResizable(true);
+    }
