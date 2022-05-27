@@ -1,0 +1,114 @@
+package MenuSetAlatMakan;
+import Final.Final;
+
+import MenuMainan.MenuMainan;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuSetAlatMakan extends javax.swing.JFrame {
+    private JButton hitungTotalPembayaranButton;
+    private JTextField textJumlah;
+    private JPanel panelsetalatmakan;
+    private JLabel labelValeriesFeedingSet;
+    private JLabel labelHarga;
+    private JLabel labelPilihanWarna;
+    private JLabel labelHijau;
+    private JLabel labelPutih;
+    private JLabel labelPink;
+    private JLabel labelUngu;
+    private JLabel labelMasukkanPilihanWarna;
+    private JLabel labelJumlah;
+    private JButton buttonback;
+    private JTextField texttotal;
+    private JComboBox comboBoxpilihwarna;
+    private JTextField textharga;
+    private JLabel labelhargaa;
+    private JComboBox comboBoxmetode;
+    private JTextField textmetode;
+    private JButton buttonlihat;
+    private JTextArea texthasil;
+    private JButton nextButton;
+
+    public MenuSetAlatMakan() {
+        add(panelsetalatmakan);
+        setSize(500, 500);
+
+        buttonback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+        comboBoxpilihwarna.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Warna = (String) comboBoxpilihwarna.getSelectedItem();
+                switch (Warna) {
+                    case "Hijau":
+                        textharga.setText("2000000");
+                        break;
+                    case "Putih":
+                        textharga.setText("1000000");
+                        break;
+                    case "Pink":
+                        textharga.setText("1700000");
+                        break;
+                    case "Ungu":
+                        textharga.setText("1600000");
+                        break;
+                }
+            }
+        });
+        hitungTotalPembayaranButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int jumlahbarang = Integer.parseInt(textJumlah.getText());
+                int hargabarang = Integer.parseInt(textharga.getText());
+                int totalharga = jumlahbarang * hargabarang;
+                texttotal.setText(Integer.toString(totalharga));
+            }
+        });
+        comboBoxmetode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String metode = (String) comboBoxmetode.getSelectedItem();
+                switch (metode) {
+                    case "Transfer antar Bank":
+                        textmetode.setText("Silakan lakukan pembayaran ke nomor rekening 2345677");
+                        break;
+                    case "COD (Bayar di tempat)":
+                        textmetode.setText("Silakan menunggu barang datang untuk melakukan pembayaran");
+                        break;
+                }
+            }
+        });
+        buttonlihat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                texthasil.setText(" Pengemasan barang dilakukan dalam 2 hari, " +
+                        " estimasi sampai diperkirakan 7 hari setelah melakukan pembayaran, " +
+                        "terimakasih sudah berbelanja disini");
+            }
+        });
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Final akhir = new Final();
+                akhir.setVisible(true);
+            }
+        });
+    }
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("FEEDING SET MENU");
+        frame.setContentPane(new MenuSetAlatMakan().panelsetalatmakan);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(900, 900);
+        frame.setResizable(true);
+    }
+
+}
